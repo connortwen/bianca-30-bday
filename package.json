@@ -11,7 +11,8 @@
     "sync": "node scripts/sync-memories.mjs",
     "prebuild": "node scripts/sync-memories.mjs",
     "predev": "node scripts/sync-memories.mjs",
-    "pretest": "node scripts/sync-memories.mjs"
+    "pretest": "node scripts/sync-memories.mjs",
+    "code": "node scripts/hash-code.mjs"
   },
   "dependencies": {
     "next": "16.2.10",

@@ -39,4 +39,15 @@ describe("memories data", () => {
       expect(["normal", "locked", "coming-soon", undefined]).toContain(m.status);
     }
   });
+
+  it("gives every locked memory a code hash and reveal photo", () => {
+    for (const m of memories) {
+      if (m.status === "locked") {
+        expect(m.codeHash).toMatch(/^[0-9a-f]{64}$/);
+        expect(m.photo).toBeDefined();
+      } else {
+        expect(m.codeHash).toBeUndefined();
+      }
+    }
+  });
 });

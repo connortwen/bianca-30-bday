@@ -12,6 +12,7 @@ export type Memory = {
   date: string; // display string, e.g. "April 2023"
   photo?: string; // "/memories/kyoto.webp" — required when status is "normal"
   status?: MemoryStatus; // defaults to "normal"
+  codeHash?: string; // sha-256 of the unlock code — locked memories only
 };
 
 // Content is managed in content/memories.csv — edit that file, then run

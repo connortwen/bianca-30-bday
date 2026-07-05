@@ -1,31 +1,31 @@
-id,status,lat,lng,location,title,caption,date,photo
-philadelphia,,39.953,-75.164,Philadelphia,Placeholder: Philadelphia,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg
-san-francisco,,37.775,-122.419,San Francisco,Placeholder: San Francisco,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg
-nyc-les,,40.715,-73.986,"Lower East Side, New York","Placeholder: Lower East Side, New York",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg
-miami,,25.762,-80.192,Miami,Placeholder: Miami,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg
-rhode-island,,41.58,-71.477,Rhode Island,Placeholder: Rhode Island,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg
-big-sur,,36.27,-121.808,Big Sur,Placeholder: Big Sur,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg
-pacific-palisades,,34.048,-118.526,Pacific Palisades,Placeholder: Pacific Palisades,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg
-cupertino,,37.323,-122.032,Cupertino,Placeholder: Cupertino,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg
-salt-lake-city,,40.761,-111.891,Salt Lake City,Placeholder: Salt Lake City,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg
-lake-tahoe,,39.097,-120.032,Lake Tahoe,Placeholder: Lake Tahoe,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg
-singapore-orchard,,1.304,103.832,"Orchard, Singapore","Placeholder: Orchard, Singapore",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg
-hong-kong,,22.28,114.166,"Upper House, Hong Kong","Placeholder: Upper House, Hong Kong",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg
-niseko,,42.805,140.687,"Niseko, Japan","Placeholder: Niseko, Japan",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg
-tokyo,,35.68,139.69,"Tokyo, Japan","Placeholder: Tokyo, Japan",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg
-taipei,,25.033,121.565,"Taipei, Taiwan","Placeholder: Taipei, Taiwan",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg
-copenhagen,,55.676,12.568,Copenhagen,Placeholder: Copenhagen,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg
-barcelona,,41.387,2.17,Barcelona,Placeholder: Barcelona,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg
-lisbon,,38.722,-9.139,Lisbon,Placeholder: Lisbon,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg
-puerto-rico,,18.466,-66.106,Puerto Rico,Placeholder: Puerto Rico,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg
-cabo,,22.89,-109.917,Cabo,Placeholder: Cabo,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg
-dumaguete,,9.307,123.307,"Dumaguete, Philippines","Placeholder: Dumaguete, Philippines",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg
-punta-fuego,,14.164,120.588,"Punta Fuego, Philippines","Placeholder: Punta Fuego, Philippines",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg
-uptown-bgc,,14.559,121.055,"Uptown BGC, Philippines","Placeholder: Uptown BGC, Philippines",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg
-cdmx,,19.433,-99.133,CDMX,Placeholder: CDMX,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg
-sydney,locked,-33.87,151.21,"Sydney, Australia",Placeholder: a locked memory,Placeholder teaser — this one stays secret for now.,Month 20XX,
-santorini,coming-soon,36.393,25.461,"Santorini, Greece",Coming soon,A new adventure is brewing.,someday soon,
-london,coming-soon,51.507,-0.128,"London, England",Coming soon,A new adventure is brewing.,someday soon,
-breakfast-point,coming-soon,-33.841,151.11,"Breakfast Point, Australia",Coming soon,A new adventure is brewing.,someday soon,
-shanghai,coming-soon,31.23,121.474,"Shanghai, China",Coming soon,A new adventure is brewing.,someday soon,
-amanemu,coming-soon,34.284,136.772,"Amanemu, Japan",Coming soon,A new adventure is brewing.,someday soon,
+id,status,lat,lng,location,title,caption,date,photo,code
+philadelphia,,39.953,-75.164,Philadelphia,Placeholder: Philadelphia,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg,
+san-francisco,,37.775,-122.419,San Francisco,Placeholder: San Francisco,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg,
+nyc-les,,40.715,-73.986,"Lower East Side, New York","Placeholder: Lower East Side, New York",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg,
+miami,,25.762,-80.192,Miami,Placeholder: Miami,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg,
+rhode-island,,41.58,-71.477,Rhode Island,Placeholder: Rhode Island,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg,
+big-sur,,36.27,-121.808,Big Sur,Placeholder: Big Sur,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg,
+pacific-palisades,,34.048,-118.526,Pacific Palisades,Placeholder: Pacific Palisades,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg,
+cupertino,,37.323,-122.032,Cupertino,Placeholder: Cupertino,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg,
+salt-lake-city,,40.761,-111.891,Salt Lake City,Placeholder: Salt Lake City,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg,
+lake-tahoe,,39.097,-120.032,Lake Tahoe,Placeholder: Lake Tahoe,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg,
+singapore-orchard,,1.304,103.832,"Orchard, Singapore","Placeholder: Orchard, Singapore",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg,
+hong-kong,,22.28,114.166,"Upper House, Hong Kong","Placeholder: Upper House, Hong Kong",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg,
+niseko,,42.805,140.687,"Niseko, Japan","Placeholder: Niseko, Japan",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg,
+tokyo,,35.68,139.69,"Tokyo, Japan","Placeholder: Tokyo, Japan",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg,
+taipei,,25.033,121.565,"Taipei, Taiwan","Placeholder: Taipei, Taiwan",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg,
+copenhagen,,55.676,12.568,Copenhagen,Placeholder: Copenhagen,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg,
+barcelona,,41.387,2.17,Barcelona,Placeholder: Barcelona,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg,
+lisbon,,38.722,-9.139,Lisbon,Placeholder: Lisbon,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg,
+puerto-rico,,18.466,-66.106,Puerto Rico,Placeholder: Puerto Rico,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg,
+cabo,,22.89,-109.917,Cabo,Placeholder: Cabo,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-5.svg,
+dumaguete,,9.307,123.307,"Dumaguete, Philippines","Placeholder: Dumaguete, Philippines",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-1.svg,
+punta-fuego,,14.164,120.588,"Punta Fuego, Philippines","Placeholder: Punta Fuego, Philippines",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-2.svg,
+uptown-bgc,,14.559,121.055,"Uptown BGC, Philippines","Placeholder: Uptown BGC, Philippines",Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-3.svg,
+cdmx,,19.433,-99.133,CDMX,Placeholder: CDMX,Placeholder caption — swap with the real story.,Month 20XX,/memories/placeholder-4.svg,
+sydney,locked,-33.87,151.21,"Sydney, Australia",Placeholder: a secret in Sydney,Placeholder caption — the secret story behind this one.,Month 20XX,/memories/placeholder-1.svg,d44372c0291c367c35ade15d3a9dc6f39ac254e2a15080c12be57b6289f8b8e5
+santorini,coming-soon,36.393,25.461,"Santorini, Greece",Coming soon,A new adventure is brewing.,someday soon,,
+london,coming-soon,51.507,-0.128,"London, England",Coming soon,A new adventure is brewing.,someday soon,,
+breakfast-point,coming-soon,-33.841,151.11,"Breakfast Point, Australia",Coming soon,A new adventure is brewing.,someday soon,,
+shanghai,coming-soon,31.23,121.474,"Shanghai, China",Coming soon,A new adventure is brewing.,someday soon,,
+amanemu,coming-soon,34.284,136.772,"Amanemu, Japan",Coming soon,A new adventure is brewing.,someday soon,,

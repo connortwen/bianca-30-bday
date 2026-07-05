@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Globe, { GlobeMethods } from "react-globe.gl";
 import { AmbientLight } from "three";
 import { memories, type Memory } from "@/data/memories";
+import { loadUnlockedIds, saveUnlockedIds } from "@/lib/unlocks";
 import { createPinElement } from "./MemoryPin";
 import MemoryCard from "./MemoryCard";
 
@@ -24,6 +25,12 @@ function isMac() {
   return /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 }
 
+function revealPin(el: HTMLElement) {
+  el.classList.remove("memory-pin--locked");
+  const dot = el.querySelector(".memory-pin__dot");
+  if (dot) dot.textContent = "♥";
+}
+
 export default function MemoryGlobe() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
@@ -34,6 +41,14 @@ export default function MemoryGlobe() {
   const [size, setSize] = useState<{ width: number; height: number } | null>(null);
   const [selected, setSelected] = useState<Memory | null>(null);
   const [zoomHint, setZoomHint] = useState(false);
+  // Safe to read localStorage in the initializer: this component is client-only.
+  const [unlocked, setUnlocked] = useState<Set<string>>(
+    () => new Set(loadUnlockedIds()),
+  );
+  const unlockedRef = useRef(unlocked);
+  useEffect(() => {
+    unlockedRef.current = unlocked;
+  }, [unlocked]);
 
   // Size the canvas to the wrapper (react-globe.gl defaults to the viewport).
   useEffect(() => {
@@ -97,6 +112,21 @@ export default function MemoryGlobe() {
       el.classList.toggle("memory-pin--selected", id === selected?.id),
     );
   }, [selected]);
+
+  const handleUnlock = useCallback((id: string) => {
+    setUnlocked((prev) => {
+      const next = new Set(prev).add(id);
+      saveUnlockedIds([...next]);
+      return next;
+    });
+  }, []);
+
+  // Unlocked pins shed their lock and become regular heart pins.
+  useEffect(() => {
+    pinElements.current.forEach((el, id) => {
+      if (unlocked.has(id)) revealPin(el);
+    });
+  }, [unlocked]);
 
   const handleGlobeReady = useCallback(() => {
     const globe = globeRef.current;
@@ -165,6 +195,8 @@ export default function MemoryGlobe() {
           htmlElement={(d) => {
             const memory = d as Memory;
             const el = createPinElement(memory, handleSelect);
+            // Pins are created after mount, so apply persisted unlocks here too.
+            if (unlockedRef.current.has(memory.id)) revealPin(el);
             pinElements.current.set(memory.id, el);
             return el;
           }}
@@ -210,7 +242,12 @@ export default function MemoryGlobe() {
         </button>
       </div>
       {selected && (
-        <MemoryCard memory={selected} onClose={() => setSelected(null)} />
+        <MemoryCard
+          memory={selected}
+          unlocked={unlocked.has(selected.id)}
+          onUnlock={handleUnlock}
+          onClose={() => setSelected(null)}
+        />
       )}
     </div>
   );

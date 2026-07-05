@@ -6,7 +6,7 @@ import { join } from "node:path";
 
 const CSV_PATH = "content/memories.csv";
 const OUT_PATH = "src/data/memories.generated.json";
-const COLUMNS = ["id", "status", "lat", "lng", "location", "title", "caption", "date", "photo"];
+const COLUMNS = ["id", "status", "lat", "lng", "location", "title", "caption", "date", "photo", "code"];
 const STATUSES = ["normal", "locked", "coming-soon"];
 
 // Minimal RFC 4180 parser: quoted fields, escaped quotes, CRLF/LF.
@@ -87,6 +87,19 @@ const memories = rows.map((r, i) => {
     errors.push(`line ${line}: photo ${rec.photo} not found under public/`);
   }
 
+  // Locked memories hold the content to reveal plus the unlock-code hash
+  // (generate one with `npm run code <SECRET>` — never put plaintext codes here).
+  if (status === "locked") {
+    if (!/^[0-9a-f]{64}$/.test(rec.code)) {
+      errors.push(`line ${line}: locked memories need a sha-256 code hash — run \`npm run code <SECRET>\``);
+    }
+    if (!rec.photo) {
+      errors.push(`line ${line}: locked memories need a photo to reveal once unlocked`);
+    }
+  } else if (rec.code) {
+    errors.push(`line ${line}: only locked memories may have a code`);
+  }
+
   const memory = {
     id: rec.id,
     lat,
@@ -98,6 +111,7 @@ const memories = rows.map((r, i) => {
   };
   if (rec.photo) memory.photo = rec.photo;
   if (status !== "normal") memory.status = status;
+  if (rec.code) memory.codeHash = rec.code;
   return memory;
 });
 
