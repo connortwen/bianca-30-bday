@@ -33,6 +33,7 @@ export default function MemoryCard({ memory, onClose }: Props) {
       <div
         role="dialog"
         aria-label={memory.title}
+        onClick={(event) => event.stopPropagation()}
         className="memory-card fixed left-1/2 top-1/2 z-50 w-[min(88vw,20rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-[#FFFDF8] p-3 pb-5 shadow-xl md:absolute md:left-auto md:right-8 md:translate-x-0"
         style={{ rotate: `${rotation}deg` }}
       >
