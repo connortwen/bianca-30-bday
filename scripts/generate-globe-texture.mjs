@@ -19,12 +19,11 @@ const land110 = require("world-atlas/land-110m.json");
 const W = 2048;
 const H = 1024;
 
+// Wash colors live inside the feColorMatrix values below (rows are R,G,B,A):
+// sea wash #9CCAD1 · deep sea #5E9DAF · meadow #A2C796 · forest #79A271
 const SEA = "#7FB6C4"; // muted teal
-const SEA_WASH = "#9CCAD1"; // lighter watercolor blooms in open water
 const SHALLOWS = "#C3E2DB"; // pale aqua hugging the coasts
 const LAND = "#EFE3C8"; // parchment cream
-const MEADOW = "#A8C69F"; // soft green fields
-const FOREST = "#87A97F"; // deeper green woods
 const EDGE_POOL = "#D9BF9C"; // watercolor pigment pooling at coastline edges
 const INK = "#6B5A48"; // warm sepia ink for the hand-drawn outline
 

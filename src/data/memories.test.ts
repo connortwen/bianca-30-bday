@@ -22,10 +22,21 @@ describe("memories data", () => {
     }
   });
 
-  it("points every photo at an existing file under public/", () => {
+  it("gives every normal memory a photo that exists under public/", () => {
     for (const m of memories) {
-      expect(m.photo.startsWith("/memories/")).toBe(true);
-      expect(existsSync(join(process.cwd(), "public", m.photo))).toBe(true);
+      if ((m.status ?? "normal") === "normal") {
+        expect(m.photo, `${m.id} is normal and needs a photo`).toBeDefined();
+      }
+      if (m.photo) {
+        expect(m.photo.startsWith("/memories/")).toBe(true);
+        expect(existsSync(join(process.cwd(), "public", m.photo))).toBe(true);
+      }
+    }
+  });
+
+  it("only uses known statuses", () => {
+    for (const m of memories) {
+      expect(["normal", "locked", "coming-soon", undefined]).toContain(m.status);
     }
   });
 });

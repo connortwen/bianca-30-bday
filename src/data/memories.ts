@@ -1,3 +1,5 @@
+export type MemoryStatus = "normal" | "locked" | "coming-soon";
+
 export type Memory = {
   id: string;
   lat: number;
@@ -6,7 +8,8 @@ export type Memory = {
   title: string;
   caption: string;
   date: string; // display string, e.g. "April 2023"
-  photo: string; // "/memories/kyoto.webp"
+  photo?: string; // "/memories/kyoto.webp" — required when status is "normal"
+  status?: MemoryStatus; // defaults to "normal"
 };
 
 // Placeholder seed data — replace with real memories (photos in /public/memories).
@@ -46,19 +49,59 @@ export const memories: Memory[] = [
     lat: -33.87,
     lng: 151.21,
     location: "Sydney, Australia",
-    title: "Placeholder: Sydney",
-    caption: "Placeholder caption — swap with the real story.",
+    title: "Placeholder: a locked memory",
+    caption: "Placeholder teaser — this one stays secret for now.",
     date: "Month 20XX",
-    photo: "/memories/placeholder-4.svg",
+    status: "locked",
   },
   {
-    id: "lisbon",
-    lat: 38.72,
-    lng: -9.14,
-    location: "Lisbon, Portugal",
-    title: "Placeholder: Lisbon",
-    caption: "Placeholder caption — swap with the real story.",
-    date: "Month 20XX",
-    photo: "/memories/placeholder-5.svg",
+    id: "santorini",
+    lat: 36.393,
+    lng: 25.461,
+    location: "Santorini, Greece",
+    title: "Coming soon",
+    caption: "A new adventure is brewing.",
+    date: "someday soon",
+    status: "coming-soon",
+  },
+  {
+    id: "london",
+    lat: 51.507,
+    lng: -0.128,
+    location: "London, England",
+    title: "Coming soon",
+    caption: "A new adventure is brewing.",
+    date: "someday soon",
+    status: "coming-soon",
+  },
+  {
+    id: "breakfast-point",
+    lat: -33.841,
+    lng: 151.11,
+    location: "Breakfast Point, Australia",
+    title: "Coming soon",
+    caption: "A new adventure is brewing.",
+    date: "someday soon",
+    status: "coming-soon",
+  },
+  {
+    id: "shanghai",
+    lat: 31.23,
+    lng: 121.474,
+    location: "Shanghai, China",
+    title: "Coming soon",
+    caption: "A new adventure is brewing.",
+    date: "someday soon",
+    status: "coming-soon",
+  },
+  {
+    id: "hamajima",
+    lat: 34.284,
+    lng: 136.772,
+    location: "Hamajima, Shima, Japan",
+    title: "Coming soon",
+    caption: "A new adventure is brewing.",
+    date: "someday soon",
+    status: "coming-soon",
   },
 ];

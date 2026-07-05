@@ -8,6 +8,44 @@ type Props = {
   onClose: () => void;
 };
 
+// The photo slot: a real photo for normal memories, a shrouded panel for
+// locked ones, and a dashed teaser panel for coming-soon ones.
+function CardMedia({ memory }: { memory: Memory }) {
+  const status = memory.status ?? "normal";
+
+  if (status === "locked") {
+    return (
+      <div className="grid aspect-[4/3] w-full place-items-center rounded-xl bg-[#4A4238]/10">
+        <div className="text-center">
+          <span className="text-3xl">🔒</span>
+          <p className="font-hand mt-1 text-lg text-[#4A4238]/60">still locked…</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (status === "coming-soon") {
+    return (
+      <div className="grid aspect-[4/3] w-full place-items-center rounded-xl border-2 border-dashed border-[#E8A5A0] bg-[#FFFDF8]">
+        <div className="text-center">
+          <span className="text-3xl">✨</span>
+          <p className="font-hand mt-1 text-lg text-[#4A4238]/60">coming soon…</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    // Placeholder SVGs + tiny gallery: plain img is the right tool here.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={memory.photo}
+      alt={memory.title}
+      className="aspect-[4/3] w-full rounded-xl object-cover"
+    />
+  );
+}
+
 // Polaroid-style memory card. Mobile: centered modal over a dimmed backdrop.
 // Desktop (md+): panel anchored right of the globe, no backdrop, so the
 // globe stays interactive while a card is open.
@@ -45,13 +83,7 @@ export default function MemoryCard({ memory, onClose }: Props) {
         >
           ✕
         </button>
-        {/* Placeholder SVGs + tiny gallery: plain img is the right tool here. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={memory.photo}
-          alt={memory.title}
-          className="aspect-[4/3] w-full rounded-xl object-cover"
-        />
+        <CardMedia memory={memory} />
         <h3 className="font-hand mt-3 text-2xl text-[#4A4238]">{memory.title}</h3>
         <p className="mt-1 text-sm leading-relaxed text-[#4A4238]/80">{memory.caption}</p>
         <p className="mt-3 text-xs uppercase tracking-wide text-[#4A4238]/60">
