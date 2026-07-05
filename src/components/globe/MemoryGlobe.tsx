@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Globe, { GlobeMethods } from "react-globe.gl";
+import { AmbientLight } from "three";
 import { memories, type Memory } from "@/data/memories";
 import { createPinElement } from "./MemoryPin";
 import MemoryCard from "./MemoryCard";
@@ -100,6 +101,9 @@ export default function MemoryGlobe() {
     const globe = globeRef.current;
     if (!globe) return;
     globe.renderer().setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Even, storybook lighting: replace the default ambient + directional pair
+    // (which shades one side of the sphere) with a single white ambient.
+    globe.lights([new AmbientLight(0xffffff, Math.PI)]);
     globe.pointOfView({ lat: 20, lng: 0, altitude: 2.2 }, 0);
 
     const controls = globe.controls();

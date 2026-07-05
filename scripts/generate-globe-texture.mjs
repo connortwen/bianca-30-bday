@@ -99,13 +99,76 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     </g>
   </g>
 
+  <!-- Pole caps: fade the top/bottom rows to a single flat tone. Every texture
+       column converges to one point at each pole, so any variation there
+       renders as a pinwheel artifact on the sphere. -->
+  <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8FC0CB"/>
+    <stop offset="1" stop-color="#8FC0CB" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="bottomFade" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0" stop-color="#E9E2CB"/>
+    <stop offset="1" stop-color="#E9E2CB" stop-opacity="0"/>
+  </linearGradient>
+  <rect x="0" y="0" width="100%" height="64" fill="url(#topFade)"/>
+  <rect x="0" y="${H - 64}" width="100%" height="64" fill="url(#bottomFade)"/>
+
   <!-- Paper grain over everything -->
   <rect width="100%" height="100%" filter="url(#grain)"/>
 </svg>`;
 
+// --- Seam repair ------------------------------------------------------------
+// The noise filters don't tile horizontally (librsvg ignores stitchTiles), so
+// the texture's left/right edges mismatch — a visible line at ±180° longitude.
+// Fix: roll the image half-way around (its edges become seamless, the mismatch
+// moves to the center), feather-blur a strip across that centered seam, then
+// roll back.
+
+const half = W / 2;
+
+async function roll(buffer) {
+  const left = await sharp(buffer).extract({ left: 0, top: 0, width: half, height: H }).toBuffer();
+  const right = await sharp(buffer).extract({ left: half, top: 0, width: half, height: H }).toBuffer();
+  return sharp({ create: { width: W, height: H, channels: 3, background: "#7FB6C4" } })
+    .composite([
+      { input: right, left: 0, top: 0 },
+      { input: left, left: half, top: 0 },
+    ])
+    .png()
+    .toBuffer();
+}
+
+const raw = await sharp(Buffer.from(svg)).flatten({ background: SEA }).png().toBuffer();
+const rolled = await roll(raw);
+
+const STRIP = 160;
+const blurredStrip = await sharp(rolled)
+  .extract({ left: half - STRIP / 2, top: 0, width: STRIP, height: H })
+  .blur(6)
+  .toBuffer();
+const featherMask = `<svg xmlns="http://www.w3.org/2000/svg" width="${STRIP}" height="${H}">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+    <stop offset="0.35" stop-color="#fff" stop-opacity="1"/>
+    <stop offset="0.65" stop-color="#fff" stop-opacity="1"/>
+    <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient></defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+</svg>`;
+const featheredStrip = await sharp(blurredStrip)
+  .ensureAlpha()
+  .composite([{ input: Buffer.from(featherMask), blend: "dest-in" }])
+  .png()
+  .toBuffer();
+const repaired = await sharp(rolled)
+  .composite([{ input: featheredStrip, left: half - STRIP / 2, top: 0 }])
+  .png()
+  .toBuffer();
+const final = await roll(repaired);
+
 mkdirSync("public/globe", { recursive: true });
 // Palette quantization keeps the file well under the 1 MB budget.
-await sharp(Buffer.from(svg))
+await sharp(final)
   .png({ palette: true, quality: 90, compressionLevel: 9 })
   .toFile("public/globe/watercolor-earth.png");
 console.log("Wrote public/globe/watercolor-earth.png");
