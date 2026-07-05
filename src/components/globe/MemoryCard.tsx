@@ -1,29 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { Memory } from "@/data/memories";
-import { normalizeCode, requestUnlock, sha256Hex } from "@/lib/unlocks";
 
 type Props = {
   memory: Memory;
   unlocked: boolean;
-  onUnlock: (id: string) => void;
+  onRequestUnlock: () => void;
   onClose: () => void;
 };
 
-// The photo slot: a real photo for normal (or unlocked) memories, an unlock
-// form for locked ones, and a dashed teaser panel for coming-soon ones.
+// The photo slot: a real photo for normal (or unlocked) memories, a locked
+// panel pointing at the central unlock for locked ones, and a dashed teaser
+// panel for coming-soon ones.
 function CardMedia({
   memory,
   locked,
-  onUnlock,
+  onRequestUnlock,
 }: {
   memory: Memory;
   locked: boolean;
-  onUnlock: (id: string) => void;
+  onRequestUnlock: () => void;
 }) {
   if (locked) {
-    return <LockedPanel memory={memory} onUnlock={onUnlock} />;
+    return (
+      <div className="grid aspect-[4/3] w-full place-items-center rounded-xl bg-[#4A4238]/10">
+        <div className="text-center">
+          <span className="text-3xl">🔒</span>
+          <p className="font-hand mt-1 text-lg text-[#4A4238]/70">this one&apos;s locked</p>
+          <button
+            type="button"
+            onClick={onRequestUnlock}
+            className="font-hand mt-2 rounded-full bg-[#E8A5A0] px-4 py-1.5 text-lg text-[#FFFDF8] shadow-sm transition hover:brightness-105"
+          >
+            🗝️ enter the code
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if ((memory.status ?? "normal") === "coming-soon") {
@@ -48,74 +62,7 @@ function CardMedia({
   );
 }
 
-function LockedPanel({
-  memory,
-  onUnlock,
-}: {
-  memory: Memory;
-  onUnlock: (id: string) => void;
-}) {
-  const [code, setCode] = useState("");
-  const [wrong, setWrong] = useState(false);
-  const [checking, setChecking] = useState(false);
-
-  async function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
-    const normalized = normalizeCode(code);
-    if (!normalized || checking) return;
-    setChecking(true);
-    // Server records the unlock so it syncs across devices; if the API is
-    // unreachable, fall back to checking the hash locally so it still works.
-    let result = await requestUnlock(memory.id, normalized);
-    if (result === "error") {
-      const hash = await sha256Hex(normalized);
-      result = hash === memory.codeHash ? "ok" : "wrong";
-    }
-    setChecking(false);
-    if (result === "ok") onUnlock(memory.id);
-    else setWrong(true);
-  }
-
-  return (
-    <div className="grid aspect-[4/3] w-full place-items-center rounded-xl bg-[#4A4238]/10">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center gap-2 px-4">
-        <span className="text-3xl">🔒</span>
-        <p className="font-hand text-lg text-[#4A4238]/70">enter the secret code…</p>
-        <input
-          value={code}
-          onChange={(event) => {
-            setCode(event.target.value);
-            setWrong(false);
-          }}
-          onAnimationEnd={() => setWrong(false)}
-          autoCapitalize="characters"
-          autoComplete="off"
-          spellCheck={false}
-          placeholder="CODE"
-          aria-label="Secret code"
-          className={`w-36 rounded-full border-2 border-[#4A4238]/25 bg-[#FFFDF8] px-4 py-1.5 text-center font-mono text-sm uppercase tracking-[0.2em] text-[#4A4238] outline-none focus:border-[#E9C46A] ${
-            wrong ? "card-shake border-[#E8A5A0]" : ""
-          }`}
-        />
-        <button
-          type="submit"
-          disabled={checking}
-          className="font-hand rounded-full bg-[#E8A5A0] px-5 py-1.5 text-lg text-[#FFFDF8] shadow-sm transition hover:brightness-105 disabled:opacity-60"
-        >
-          {checking ? "checking…" : "unlock"}
-        </button>
-        <p
-          aria-live="polite"
-          className={`font-hand text-sm text-[#4A4238]/60 ${wrong ? "" : "invisible"}`}
-        >
-          hmm, that&apos;s not it…
-        </p>
-      </form>
-    </div>
-  );
-}
-
-export default function MemoryCard({ memory, unlocked, onUnlock, onClose }: Props) {
+export default function MemoryCard({ memory, unlocked, onRequestUnlock, onClose }: Props) {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
@@ -151,7 +98,7 @@ export default function MemoryCard({ memory, unlocked, onUnlock, onClose }: Prop
         >
           ✕
         </button>
-        <CardMedia memory={memory} locked={locked} onUnlock={onUnlock} />
+        <CardMedia memory={memory} locked={locked} onRequestUnlock={onRequestUnlock} />
         {/* Never leak a locked memory's real title/caption before unlock. */}
         <h3 className="font-hand mt-3 text-2xl text-[#4A4238]">
           {locked ? "a secret memory" : memory.title}

@@ -27,21 +27,22 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  let body: { id?: unknown; code?: unknown };
+  let body: { code?: unknown };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "bad request" }, { status: 400 });
   }
 
-  const { id, code } = body;
-  const memory = memories.find((m) => m.id === id);
-  if (!memory?.codeHash || typeof code !== "string") {
+  const { code } = body;
+  if (typeof code !== "string" || !code.trim()) {
     return NextResponse.json({ error: "bad request" }, { status: 400 });
   }
 
+  // Central unlock: the code itself identifies which locked memory it opens.
   const hash = createHash("sha256").update(code.trim().toUpperCase()).digest("hex");
-  if (hash !== memory.codeHash) {
+  const memory = memories.find((m) => m.codeHash === hash);
+  if (!memory) {
     return NextResponse.json({ error: "wrong code" }, { status: 401 });
   }
 
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
       addRandomSuffix: false,
       allowOverwrite: true,
     });
-    return NextResponse.json({ ids: await readIds() });
+    return NextResponse.json({ unlockedId: memory.id, ids: await readIds() });
   } catch {
     return NextResponse.json({ error: "storage unavailable" }, { status: 503 });
   }

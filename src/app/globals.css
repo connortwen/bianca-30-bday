@@ -78,6 +78,18 @@ body {
   50% { translate: 0 -4px; }
 }
 
+/* Comfortable touch targets on small screens */
+@media (max-width: 640px) {
+  .memory-pin {
+    padding: 6px;
+  }
+  .memory-pin__dot {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+}
+
 /* World-tour poster tape strips */
 .tape {
   display: inline-block;

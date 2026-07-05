@@ -7,6 +7,8 @@ import { memories, type Memory } from "@/data/memories";
 import { fetchUnlockedIds, loadUnlockedIds, saveUnlockedIds } from "@/lib/unlocks";
 import { createPinElement } from "./MemoryPin";
 import MemoryCard from "./MemoryCard";
+import UnlockDialog from "./UnlockDialog";
+import AuthorNoteDialog from "./AuthorNoteDialog";
 
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 const AUTO_ROTATE_RESUME_MS = 5000;
@@ -25,6 +27,25 @@ function isMac() {
   return /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 }
 
+function ControlButton({
+  emoji,
+  label,
+  onClick,
+}: {
+  emoji: string;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button type="button" onClick={onClick} className="group flex flex-col items-center gap-1">
+      <span className="grid h-12 w-12 place-items-center rounded-full bg-[#FFFDF8]/90 text-xl shadow-md transition group-hover:scale-110 group-hover:bg-[#FFFDF8] group-hover:shadow-lg">
+        {emoji}
+      </span>
+      <span className="font-hand text-sm text-[#4A4238]/80">{label}</span>
+    </button>
+  );
+}
+
 function revealPin(el: HTMLElement) {
   el.classList.remove("memory-pin--locked");
   const dot = el.querySelector(".memory-pin__dot");
@@ -41,6 +62,8 @@ export default function MemoryGlobe() {
   const [size, setSize] = useState<{ width: number; height: number } | null>(null);
   const [selected, setSelected] = useState<Memory | null>(null);
   const [zoomHint, setZoomHint] = useState(false);
+  const [showUnlock, setShowUnlock] = useState(false);
+  const [showNote, setShowNote] = useState(false);
   // Safe to read localStorage in the initializer: this component is client-only.
   const [unlocked, setUnlocked] = useState<Set<string>>(
     () => new Set(loadUnlockedIds()),
@@ -121,6 +144,18 @@ export default function MemoryGlobe() {
     });
   }, []);
 
+  // A correct code from the central dialog: record it, then fly to the pin
+  // and pop the freshly revealed card.
+  const handleCodeUnlocked = useCallback(
+    (id: string) => {
+      handleUnlock(id);
+      setShowUnlock(false);
+      const memory = memories.find((m) => m.id === id);
+      if (memory) handleSelect(memory);
+    },
+    [handleUnlock, handleSelect],
+  );
+
   // Merge in unlocks recorded on other devices (Vercel Blob via /api/unlocks).
   useEffect(() => {
     let cancelled = false;
@@ -148,10 +183,17 @@ export default function MemoryGlobe() {
     const globe = globeRef.current;
     if (!globe) return;
     globe.renderer().setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Vertical swipes should scroll the page (snap back to the hero), while
+    // horizontal swipes rotate and pinches still reach OrbitControls.
+    globe.renderer().domElement.style.touchAction = "pan-y";
     // Even, storybook lighting: replace the default ambient + directional pair
     // (which shades one side of the sphere) with a single white ambient.
     globe.lights([new AmbientLight(0xffffff, Math.PI)]);
-    globe.pointOfView({ lat: 20, lng: 0, altitude: 2.2 }, 0);
+    // Portrait screens crop the globe horizontally — start zoomed out enough
+    // that the whole sphere is framed.
+    const el = wrapperRef.current;
+    const aspect = el ? el.clientWidth / Math.max(1, el.clientHeight) : 1;
+    globe.pointOfView({ lat: 20, lng: 0, altitude: aspect < 0.75 ? 3 : 2.2 }, 0);
 
     const controls = globe.controls();
     controls.enablePan = false;
@@ -225,18 +267,41 @@ export default function MemoryGlobe() {
           onGlobeReady={handleGlobeReady}
         />
       )}
-      {/* Whisks you to a random memory. stopPropagation keeps the click-away
-          handler from immediately closing the card it opens. */}
-      <button
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation();
-          handleSelect(memories[Math.floor(Math.random() * memories.length)]);
-        }}
-        className="font-hand absolute bottom-6 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#FFFDF8]/90 px-5 py-2 text-lg text-[#4A4238] shadow-md transition hover:bg-[#FFFDF8] hover:shadow-lg"
+      {/* Control dock: note / shuffle / unlock. stopPropagation keeps the
+          click-away handler from closing whatever these open. */}
+      <div
+        className="absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-1/2 z-20 flex -translate-x-1/2 items-end gap-6"
+        onClick={(event) => event.stopPropagation()}
       >
-        ✨ i&apos;m feeling lucky
-      </button>
+        {/* Each entry point closes anything already open, so the stage stays tidy. */}
+        <ControlButton
+          emoji="💌"
+          label="a note"
+          onClick={() => {
+            setSelected(null);
+            setShowUnlock(false);
+            setShowNote(true);
+          }}
+        />
+        <ControlButton
+          emoji="🎲"
+          label="shuffle"
+          onClick={() => {
+            setShowNote(false);
+            setShowUnlock(false);
+            handleSelect(memories[Math.floor(Math.random() * memories.length)]);
+          }}
+        />
+        <ControlButton
+          emoji="🗝️"
+          label="unlock"
+          onClick={() => {
+            setSelected(null);
+            setShowNote(false);
+            setShowUnlock(true);
+          }}
+        />
+      </div>
       {/* Shown when a plain scroll passes over the globe, so the zoom gesture is discoverable. */}
       <div
         aria-hidden
@@ -249,7 +314,7 @@ export default function MemoryGlobe() {
         </span>
       </div>
       <div
-        className="absolute bottom-6 left-6 z-20 flex flex-col gap-2"
+        className="absolute bottom-6 right-4 z-20 flex flex-col gap-2 md:left-6 md:right-auto"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -273,10 +338,20 @@ export default function MemoryGlobe() {
         <MemoryCard
           memory={selected}
           unlocked={unlocked.has(selected.id)}
-          onUnlock={handleUnlock}
+          onRequestUnlock={() => {
+            setSelected(null);
+            setShowUnlock(true);
+          }}
           onClose={() => setSelected(null)}
         />
       )}
+      {showUnlock && (
+        <UnlockDialog
+          onUnlocked={handleCodeUnlocked}
+          onClose={() => setShowUnlock(false)}
+        />
+      )}
+      {showNote && <AuthorNoteDialog onClose={() => setShowNote(false)} />}
     </div>
   );
 }

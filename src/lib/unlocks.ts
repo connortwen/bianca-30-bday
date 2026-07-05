@@ -45,19 +45,28 @@ export async function fetchUnlockedIds(): Promise<string[] | null> {
   }
 }
 
-export type UnlockResult = "ok" | "wrong" | "error";
+export type UnlockResponse =
+  | { status: "ok"; id: string }
+  | { status: "wrong" }
+  | { status: "error" };
 
-export async function requestUnlock(id: string, code: string): Promise<UnlockResult> {
+// Central unlock: send just the code; the server answers with which memory
+// it opened (and records it for every device).
+export async function requestUnlock(code: string): Promise<UnlockResponse> {
   try {
     const res = await fetch("/api/unlocks", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id, code }),
+      body: JSON.stringify({ code }),
     });
-    if (res.ok) return "ok";
-    if (res.status === 401) return "wrong";
-    return "error";
+    if (res.ok) {
+      const data = await res.json();
+      if (typeof data.unlockedId === "string") return { status: "ok", id: data.unlockedId };
+      return { status: "error" };
+    }
+    if (res.status === 401) return { status: "wrong" };
+    return { status: "error" };
   } catch {
-    return "error";
+    return { status: "error" };
   }
 }
