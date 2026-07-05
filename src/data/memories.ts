@@ -98,7 +98,7 @@ export const memories: Memory[] = [
     id: "hamajima",
     lat: 34.284,
     lng: 136.772,
-    location: "Hamajima, Shima, Japan",
+    location: "Amanemu, Japan",
     title: "Coming soon",
     caption: "A new adventure is brewing.",
     date: "someday soon",
