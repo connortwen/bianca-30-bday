@@ -12,7 +12,8 @@ const AUTO_ROTATE_RESUME_MS = 5000;
 const ZOOM_HINT_MS = 1600;
 // Camera altitude bounds, kept in sync with controls min/maxDistance
 // (globe radius is 100 units; distance = radius * (1 + altitude)).
-const MIN_ALTITUDE = 0.5;
+// Min is deep enough to separate close pin clusters (Bay Area, Manila).
+const MIN_ALTITUDE = 0.1;
 const MAX_ALTITUDE = 3;
 
 function prefersReducedMotion() {
@@ -108,7 +109,7 @@ export default function MemoryGlobe() {
 
     const controls = globe.controls();
     controls.enablePan = false;
-    controls.minDistance = 150; // ~country level (globe radius is 100 units)
+    controls.minDistance = 110; // ~city-cluster level (globe radius is 100 units)
     controls.maxDistance = 400; // whole globe comfortably in frame
     controls.autoRotate = !prefersReducedMotion();
     controls.autoRotateSpeed = 0.4;
