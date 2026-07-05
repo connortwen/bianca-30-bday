@@ -1,0 +1,31 @@
+import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { memories } from "./memories";
+
+describe("memories data", () => {
+  it("has at least 3 seed memories", () => {
+    expect(memories.length).toBeGreaterThanOrEqual(3);
+  });
+
+  it("has unique ids", () => {
+    const ids = memories.map((m) => m.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("has valid coordinates", () => {
+    for (const m of memories) {
+      expect(m.lat).toBeGreaterThanOrEqual(-90);
+      expect(m.lat).toBeLessThanOrEqual(90);
+      expect(m.lng).toBeGreaterThanOrEqual(-180);
+      expect(m.lng).toBeLessThanOrEqual(180);
+    }
+  });
+
+  it("points every photo at an existing file under public/", () => {
+    for (const m of memories) {
+      expect(m.photo.startsWith("/memories/")).toBe(true);
+      expect(existsSync(join(process.cwd(), "public", m.photo))).toBe(true);
+    }
+  });
+});
