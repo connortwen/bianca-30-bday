@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Globe, { GlobeMethods } from "react-globe.gl";
 import { AmbientLight } from "three";
 import { memories, type Memory } from "@/data/memories";
-import { loadUnlockedIds, saveUnlockedIds } from "@/lib/unlocks";
+import { fetchUnlockedIds, loadUnlockedIds, saveUnlockedIds } from "@/lib/unlocks";
 import { createPinElement } from "./MemoryPin";
 import MemoryCard from "./MemoryCard";
 
@@ -121,6 +121,22 @@ export default function MemoryGlobe() {
     });
   }, []);
 
+  // Merge in unlocks recorded on other devices (Vercel Blob via /api/unlocks).
+  useEffect(() => {
+    let cancelled = false;
+    fetchUnlockedIds().then((ids) => {
+      if (cancelled || !ids?.length) return;
+      setUnlocked((prev) => {
+        const next = new Set([...prev, ...ids]);
+        saveUnlockedIds([...next]);
+        return next;
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // Unlocked pins shed their lock and become regular heart pins.
   useEffect(() => {
     pinElements.current.forEach((el, id) => {
@@ -209,10 +225,22 @@ export default function MemoryGlobe() {
           onGlobeReady={handleGlobeReady}
         />
       )}
+      {/* Whisks you to a random memory. stopPropagation keeps the click-away
+          handler from immediately closing the card it opens. */}
+      <button
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation();
+          handleSelect(memories[Math.floor(Math.random() * memories.length)]);
+        }}
+        className="font-hand absolute bottom-6 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#FFFDF8]/90 px-5 py-2 text-lg text-[#4A4238] shadow-md transition hover:bg-[#FFFDF8] hover:shadow-lg"
+      >
+        ✨ i&apos;m feeling lucky
+      </button>
       {/* Shown when a plain scroll passes over the globe, so the zoom gesture is discoverable. */}
       <div
         aria-hidden
-        className={`pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center transition-opacity duration-300 ${
+        className={`pointer-events-none absolute inset-x-0 bottom-20 z-20 flex justify-center transition-opacity duration-300 ${
           zoomHint ? "opacity-100" : "opacity-0"
         }`}
       >

@@ -31,3 +31,33 @@ export async function sha256Hex(input: string): Promise<string> {
 export function normalizeCode(code: string): string {
   return code.trim().toUpperCase();
 }
+
+// --- Cross-device state via /api/unlocks (Vercel Blob) ----------------------
+
+export async function fetchUnlockedIds(): Promise<string[] | null> {
+  try {
+    const res = await fetch("/api/unlocks", { cache: "no-store" });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return Array.isArray(data.ids) ? data.ids : null;
+  } catch {
+    return null;
+  }
+}
+
+export type UnlockResult = "ok" | "wrong" | "error";
+
+export async function requestUnlock(id: string, code: string): Promise<UnlockResult> {
+  try {
+    const res = await fetch("/api/unlocks", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id, code }),
+    });
+    if (res.ok) return "ok";
+    if (res.status === 401) return "wrong";
+    return "error";
+  } catch {
+    return "error";
+  }
+}

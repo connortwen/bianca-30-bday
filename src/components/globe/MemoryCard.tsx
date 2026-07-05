@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Memory } from "@/data/memories";
-import { normalizeCode, sha256Hex } from "@/lib/unlocks";
+import { normalizeCode, requestUnlock, sha256Hex } from "@/lib/unlocks";
 
 type Props = {
   memory: Memory;
@@ -57,17 +57,23 @@ function LockedPanel({
 }) {
   const [code, setCode] = useState("");
   const [wrong, setWrong] = useState(false);
+  const [checking, setChecking] = useState(false);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const normalized = normalizeCode(code);
-    if (!normalized) return;
-    const hash = await sha256Hex(normalized);
-    if (hash === memory.codeHash) {
-      onUnlock(memory.id);
-    } else {
-      setWrong(true);
+    if (!normalized || checking) return;
+    setChecking(true);
+    // Server records the unlock so it syncs across devices; if the API is
+    // unreachable, fall back to checking the hash locally so it still works.
+    let result = await requestUnlock(memory.id, normalized);
+    if (result === "error") {
+      const hash = await sha256Hex(normalized);
+      result = hash === memory.codeHash ? "ok" : "wrong";
     }
+    setChecking(false);
+    if (result === "ok") onUnlock(memory.id);
+    else setWrong(true);
   }
 
   return (
@@ -93,9 +99,10 @@ function LockedPanel({
         />
         <button
           type="submit"
-          className="font-hand rounded-full bg-[#E8A5A0] px-5 py-1.5 text-lg text-[#FFFDF8] shadow-sm transition hover:brightness-105"
+          disabled={checking}
+          className="font-hand rounded-full bg-[#E8A5A0] px-5 py-1.5 text-lg text-[#FFFDF8] shadow-sm transition hover:brightness-105 disabled:opacity-60"
         >
-          unlock
+          {checking ? "checking…" : "unlock"}
         </button>
         <p
           aria-live="polite"
