@@ -1,0 +1,302 @@
+[
+  {
+    "id": "philadelphia",
+    "lat": 39.953,
+    "lng": -75.164,
+    "location": "Philadelphia",
+    "title": "Placeholder: Philadelphia",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-1.svg"
+  },
+  {
+    "id": "san-francisco",
+    "lat": 37.775,
+    "lng": -122.419,
+    "location": "San Francisco",
+    "title": "Placeholder: San Francisco",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-2.svg"
+  },
+  {
+    "id": "nyc-les",
+    "lat": 40.715,
+    "lng": -73.986,
+    "location": "Lower East Side, New York",
+    "title": "Placeholder: Lower East Side, New York",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-3.svg"
+  },
+  {
+    "id": "miami",
+    "lat": 25.762,
+    "lng": -80.192,
+    "location": "Miami",
+    "title": "Placeholder: Miami",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-4.svg"
+  },
+  {
+    "id": "rhode-island",
+    "lat": 41.58,
+    "lng": -71.477,
+    "location": "Rhode Island",
+    "title": "Placeholder: Rhode Island",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-5.svg"
+  },
+  {
+    "id": "big-sur",
+    "lat": 36.27,
+    "lng": -121.808,
+    "location": "Big Sur",
+    "title": "Placeholder: Big Sur",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-1.svg"
+  },
+  {
+    "id": "pacific-palisades",
+    "lat": 34.048,
+    "lng": -118.526,
+    "location": "Pacific Palisades",
+    "title": "Placeholder: Pacific Palisades",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-2.svg"
+  },
+  {
+    "id": "cupertino",
+    "lat": 37.323,
+    "lng": -122.032,
+    "location": "Cupertino",
+    "title": "Placeholder: Cupertino",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-3.svg"
+  },
+  {
+    "id": "salt-lake-city",
+    "lat": 40.761,
+    "lng": -111.891,
+    "location": "Salt Lake City",
+    "title": "Placeholder: Salt Lake City",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-4.svg"
+  },
+  {
+    "id": "lake-tahoe",
+    "lat": 39.097,
+    "lng": -120.032,
+    "location": "Lake Tahoe",
+    "title": "Placeholder: Lake Tahoe",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-5.svg"
+  },
+  {
+    "id": "singapore-orchard",
+    "lat": 1.304,
+    "lng": 103.832,
+    "location": "Orchard, Singapore",
+    "title": "Placeholder: Orchard, Singapore",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-1.svg"
+  },
+  {
+    "id": "hong-kong",
+    "lat": 22.28,
+    "lng": 114.166,
+    "location": "Upper House, Hong Kong",
+    "title": "Placeholder: Upper House, Hong Kong",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-2.svg"
+  },
+  {
+    "id": "niseko",
+    "lat": 42.805,
+    "lng": 140.687,
+    "location": "Niseko, Japan",
+    "title": "Placeholder: Niseko, Japan",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-3.svg"
+  },
+  {
+    "id": "tokyo",
+    "lat": 35.68,
+    "lng": 139.69,
+    "location": "Tokyo, Japan",
+    "title": "Placeholder: Tokyo, Japan",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-4.svg"
+  },
+  {
+    "id": "taipei",
+    "lat": 25.033,
+    "lng": 121.565,
+    "location": "Taipei, Taiwan",
+    "title": "Placeholder: Taipei, Taiwan",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-5.svg"
+  },
+  {
+    "id": "copenhagen",
+    "lat": 55.676,
+    "lng": 12.568,
+    "location": "Copenhagen",
+    "title": "Placeholder: Copenhagen",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-1.svg"
+  },
+  {
+    "id": "barcelona",
+    "lat": 41.387,
+    "lng": 2.17,
+    "location": "Barcelona",
+    "title": "Placeholder: Barcelona",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-2.svg"
+  },
+  {
+    "id": "lisbon",
+    "lat": 38.722,
+    "lng": -9.139,
+    "location": "Lisbon",
+    "title": "Placeholder: Lisbon",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-3.svg"
+  },
+  {
+    "id": "puerto-rico",
+    "lat": 18.466,
+    "lng": -66.106,
+    "location": "Puerto Rico",
+    "title": "Placeholder: Puerto Rico",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-4.svg"
+  },
+  {
+    "id": "cabo",
+    "lat": 22.89,
+    "lng": -109.917,
+    "location": "Cabo",
+    "title": "Placeholder: Cabo",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-5.svg"
+  },
+  {
+    "id": "dumaguete",
+    "lat": 9.307,
+    "lng": 123.307,
+    "location": "Dumaguete, Philippines",
+    "title": "Placeholder: Dumaguete, Philippines",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-1.svg"
+  },
+  {
+    "id": "punta-fuego",
+    "lat": 14.164,
+    "lng": 120.588,
+    "location": "Punta Fuego, Philippines",
+    "title": "Placeholder: Punta Fuego, Philippines",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-2.svg"
+  },
+  {
+    "id": "uptown-bgc",
+    "lat": 14.559,
+    "lng": 121.055,
+    "location": "Uptown BGC, Philippines",
+    "title": "Placeholder: Uptown BGC, Philippines",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-3.svg"
+  },
+  {
+    "id": "cdmx",
+    "lat": 19.433,
+    "lng": -99.133,
+    "location": "CDMX",
+    "title": "Placeholder: CDMX",
+    "caption": "Placeholder caption — swap with the real story.",
+    "date": "Month 20XX",
+    "photo": "/memories/placeholder-4.svg"
+  },
+  {
+    "id": "sydney",
+    "lat": -33.87,
+    "lng": 151.21,
+    "location": "Sydney, Australia",
+    "title": "Placeholder: a locked memory",
+    "caption": "Placeholder teaser — this one stays secret for now.",
+    "date": "Month 20XX",
+    "status": "locked"
+  },
+  {
+    "id": "santorini",
+    "lat": 36.393,
+    "lng": 25.461,
+    "location": "Santorini, Greece",
+    "title": "Coming soon",
+    "caption": "A new adventure is brewing.",
+    "date": "someday soon",
+    "status": "coming-soon"
+  },
+  {
+    "id": "london",
+    "lat": 51.507,
+    "lng": -0.128,
+    "location": "London, England",
+    "title": "Coming soon",
+    "caption": "A new adventure is brewing.",
+    "date": "someday soon",
+    "status": "coming-soon"
+  },
+  {
+    "id": "breakfast-point",
+    "lat": -33.841,
+    "lng": 151.11,
+    "location": "Breakfast Point, Australia",
+    "title": "Coming soon",
+    "caption": "A new adventure is brewing.",
+    "date": "someday soon",
+    "status": "coming-soon"
+  },
+  {
+    "id": "shanghai",
+    "lat": 31.23,
+    "lng": 121.474,
+    "location": "Shanghai, China",
+    "title": "Coming soon",
+    "caption": "A new adventure is brewing.",
+    "date": "someday soon",
+    "status": "coming-soon"
+  },
+  {
+    "id": "amanemu",
+    "lat": 34.284,
+    "lng": 136.772,
+    "location": "Amanemu, Japan",
+    "title": "Coming soon",
+    "caption": "A new adventure is brewing.",
+    "date": "someday soon",
+    "status": "coming-soon"
+  }
+]
