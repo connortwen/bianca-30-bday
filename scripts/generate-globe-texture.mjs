@@ -99,6 +99,25 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     </g>
   </g>
 
+  <!-- Tiny hand-painted doodles in the open oceans: hearts and sparkles. -->
+  <defs>
+    <path id="doodle-heart" d="M8 13.5 C3 10 1.5 6.5 3.5 4.2 C5.2 2.4 7.4 3.4 8 5 C8.6 3.4 10.8 2.4 12.5 4.2 C14.5 6.5 13 10 8 13.5 Z"/>
+    <path id="doodle-star" d="M8 0 L9.8 6.2 L16 8 L9.8 9.8 L8 16 L6.2 9.8 L0 8 L6.2 6.2 Z"/>
+  </defs>
+  <g>
+    <use href="#doodle-heart" x="0" y="0" transform="translate(300 660) scale(1.5)" fill="#E8A5A0" opacity="0.55"/>
+    <use href="#doodle-star" transform="translate(400 720) scale(1.1)" fill="#FFFDF8" opacity="0.65"/>
+    <use href="#doodle-star" transform="translate(240 590) scale(0.8)" fill="#FFFDF8" opacity="0.6"/>
+    <use href="#doodle-heart" transform="translate(150 400) scale(1.1)" fill="#E8A5A0" opacity="0.5"/>
+    <use href="#doodle-star" transform="translate(830 380) scale(1.2)" fill="#FFFDF8" opacity="0.65"/>
+    <use href="#doodle-heart" transform="translate(905 660) scale(1.4)" fill="#E8A5A0" opacity="0.55"/>
+    <use href="#doodle-star" transform="translate(960 590) scale(0.9)" fill="#FFFDF8" opacity="0.6"/>
+    <use href="#doodle-heart" transform="translate(1480 640) scale(1.3)" fill="#E8A5A0" opacity="0.55"/>
+    <use href="#doodle-star" transform="translate(1560 700) scale(1)" fill="#FFFDF8" opacity="0.65"/>
+    <use href="#doodle-star" transform="translate(1860 430) scale(1.2)" fill="#FFFDF8" opacity="0.6"/>
+    <use href="#doodle-heart" transform="translate(1790 620) scale(1.1)" fill="#E8A5A0" opacity="0.5"/>
+  </g>
+
   <!-- Pole caps: fade the top/bottom rows to a single flat tone. Every texture
        column converges to one point at each pole, so any variation there
        renders as a pinwheel artifact on the sphere. -->

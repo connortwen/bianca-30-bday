@@ -5,7 +5,7 @@ import Globe, { GlobeMethods } from "react-globe.gl";
 import { AmbientLight } from "three";
 import { memories, type Memory } from "@/data/memories";
 import { fetchUnlockedIds, loadUnlockedIds, saveUnlockedIds } from "@/lib/unlocks";
-import { createPinElement } from "./MemoryPin";
+import { createPinElement, wakePinElement } from "./MemoryPin";
 import MemoryCard from "./MemoryCard";
 import UnlockDialog from "./UnlockDialog";
 import AuthorNoteDialog from "./AuthorNoteDialog";
@@ -30,26 +30,24 @@ function isMac() {
 function ControlButton({
   emoji,
   label,
+  color,
   onClick,
 }: {
   emoji: string;
   label: string;
+  color: string;
   onClick: () => void;
 }) {
   return (
     <button type="button" onClick={onClick} className="group flex flex-col items-center gap-1">
-      <span className="grid h-12 w-12 place-items-center rounded-full bg-[#FFFDF8]/90 text-xl shadow-md transition group-hover:scale-110 group-hover:bg-[#FFFDF8] group-hover:shadow-lg">
+      <span
+        className={`grid h-12 w-12 place-items-center rounded-full ${color} border-[3px] border-[#FFFDF8] text-xl shadow-md transition group-hover:-rotate-6 group-hover:scale-110 group-hover:shadow-lg`}
+      >
         {emoji}
       </span>
       <span className="font-hand text-sm text-[#4A4238]/80">{label}</span>
     </button>
   );
-}
-
-function revealPin(el: HTMLElement) {
-  el.classList.remove("memory-pin--locked");
-  const dot = el.querySelector(".memory-pin__dot");
-  if (dot) dot.textContent = "♥";
 }
 
 export default function MemoryGlobe() {
@@ -172,10 +170,10 @@ export default function MemoryGlobe() {
     };
   }, []);
 
-  // Unlocked pins shed their lock and become regular heart pins.
+  // Unlocked pins wake up with heart eyes.
   useEffect(() => {
     pinElements.current.forEach((el, id) => {
-      if (unlocked.has(id)) revealPin(el);
+      if (unlocked.has(id)) wakePinElement(el);
     });
   }, [unlocked]);
 
@@ -254,7 +252,7 @@ export default function MemoryGlobe() {
             const memory = d as Memory;
             const el = createPinElement(memory, handleSelect);
             // Pins are created after mount, so apply persisted unlocks here too.
-            if (unlockedRef.current.has(memory.id)) revealPin(el);
+            if (unlockedRef.current.has(memory.id)) wakePinElement(el);
             pinElements.current.set(memory.id, el);
             return el;
           }}
@@ -277,6 +275,7 @@ export default function MemoryGlobe() {
         <ControlButton
           emoji="💌"
           label="a note"
+          color="bg-[#F9CFCB]"
           onClick={() => {
             setSelected(null);
             setShowUnlock(false);
@@ -286,6 +285,7 @@ export default function MemoryGlobe() {
         <ControlButton
           emoji="🎲"
           label="shuffle"
+          color="bg-[#CFE3C4]"
           onClick={() => {
             setShowNote(false);
             setShowUnlock(false);
@@ -295,6 +295,7 @@ export default function MemoryGlobe() {
         <ControlButton
           emoji="🗝️"
           label="unlock"
+          color="bg-[#F4E3B2]"
           onClick={() => {
             setSelected(null);
             setShowNote(false);

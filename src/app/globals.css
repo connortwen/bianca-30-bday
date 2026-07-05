@@ -38,39 +38,22 @@ body {
 }
 
 .memory-pin__dot {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 9999px;
-  background: #e8a5a0;
-  color: #fffdf8;
-  font-size: 12px;
-  line-height: 1;
-  box-shadow: 0 2px 6px rgba(74, 66, 56, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(74, 66, 56, 0.3));
+  transition: transform 0.2s ease, filter 0.2s ease;
   animation: pin-bob 2.6s ease-in-out infinite;
 }
 
 .memory-pin:hover .memory-pin__dot,
 .memory-pin:focus-visible .memory-pin__dot {
-  transform: scale(1.15);
-  box-shadow: 0 0 0 3px #e9c46a, 0 2px 8px rgba(74, 66, 56, 0.3);
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 7px rgba(233, 196, 106, 0.95));
 }
 
 .memory-pin--selected .memory-pin__dot {
-  box-shadow: 0 0 0 3px #e9c46a, 0 0 14px 4px rgba(233, 196, 106, 0.65);
-}
-
-.memory-pin--locked .memory-pin__dot {
-  background: #6b5a48;
-  font-size: 11px;
-}
-
-.memory-pin--coming-soon .memory-pin__dot {
-  background: #fffdf8;
-  border: 2px dashed #e8a5a0;
-  font-size: 11px;
+  filter: drop-shadow(0 0 9px rgba(233, 196, 106, 1));
 }
 
 @keyframes pin-bob {
@@ -84,9 +67,8 @@ body {
     padding: 6px;
   }
   .memory-pin__dot {
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -123,6 +105,29 @@ body {
   animation: card-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+/* A little washi-tape strip "holding" every card and dialog in place */
+.memory-card::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 72px;
+  height: 22px;
+  background: rgba(232, 165, 160, 0.75);
+  transform: translateX(-50%) rotate(-3deg);
+  clip-path: polygon(3% 10%, 0% 50%, 4% 92%, 97% 100%, 100% 55%, 96% 4%);
+}
+
+.sparkle {
+  position: absolute;
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; scale: 0.75; }
+  50% { opacity: 0.9; scale: 1.1; }
+}
+
 .card-shake {
   animation: shake 0.4s ease;
 }
@@ -154,7 +159,8 @@ body {
   .memory-card,
   .cloud,
   .scroll-hint,
-  .card-shake {
+  .card-shake,
+  .sparkle {
     animation: none;
   }
 }
