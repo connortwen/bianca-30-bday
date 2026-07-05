@@ -24,3 +24,70 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* --- Memory globe ------------------------------------------------------- */
+
+.memory-pin {
+  padding: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.memory-pin__dot {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: #e8a5a0;
+  color: #fffdf8;
+  font-size: 12px;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(74, 66, 56, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pin-bob 2.6s ease-in-out infinite;
+}
+
+.memory-pin:hover .memory-pin__dot,
+.memory-pin:focus-visible .memory-pin__dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px #e9c46a, 0 2px 8px rgba(74, 66, 56, 0.3);
+}
+
+.memory-pin--selected .memory-pin__dot {
+  box-shadow: 0 0 0 3px #e9c46a, 0 0 14px 4px rgba(233, 196, 106, 0.65);
+}
+
+@keyframes pin-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -4px; }
+}
+
+.memory-card {
+  animation: card-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes card-pop {
+  from { opacity: 0; scale: 0.92; }
+  to { opacity: 1; scale: 1; }
+}
+
+.cloud {
+  position: absolute;
+  animation: cloud-drift var(--drift-duration, 80s) ease-in-out infinite alternate;
+}
+
+@keyframes cloud-drift {
+  from { translate: 0 0; }
+  to { translate: 60px 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-pin__dot,
+  .memory-card,
+  .cloud {
+    animation: none;
+  }
+}
