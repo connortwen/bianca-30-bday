@@ -129,11 +129,20 @@ export default function MemoryGlobe() {
     );
   }, []);
 
-  // Gold glow on whichever pin is open.
+  // Gold glow on whichever pin is open. Closing a card also restarts the
+  // idle-spin countdown — without this, a pin click (which stops the spin)
+  // would leave the globe frozen until the next manual drag.
   useEffect(() => {
     pinElements.current.forEach((el, id) =>
       el.classList.toggle("memory-pin--selected", id === selected?.id),
     );
+    if (selected === null) {
+      if (resumeTimer.current) clearTimeout(resumeTimer.current);
+      resumeTimer.current = setTimeout(() => {
+        const globe = globeRef.current;
+        if (globe && !prefersReducedMotion()) globe.controls().autoRotate = true;
+      }, AUTO_ROTATE_RESUME_MS);
+    }
   }, [selected]);
 
   const handleUnlock = useCallback((id: string) => {

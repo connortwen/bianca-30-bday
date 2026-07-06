@@ -51,23 +51,23 @@ function CardMedia({
     );
   }
 
+  const fit = PHOTO_FIT[memory.id] ?? "object-cover";
   return (
     // Placeholder SVGs + tiny gallery: plain img is the right tool here.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={memory.photo}
       alt={memory.title}
-      className={`aspect-[4/3] w-full rounded-xl object-cover ${
-        PHOTO_CROP[memory.id] ?? ""
-      }`}
+      className={`aspect-[4/3] w-full rounded-xl ${fit}`}
     />
   );
 }
 
-// Crop-window overrides for photos whose subjects sit away from center
-// (object-cover defaults to a centered crop).
-const PHOTO_CROP: Record<string, string> = {
-  miami: "object-bottom",
+// Framing overrides for photos a centered 4:3 crop doesn't flatter:
+// shift the crop window, or letterbox the whole photo on a cream matte.
+const PHOTO_FIT: Record<string, string> = {
+  miami: "object-cover object-bottom",
+  dumaguete: "object-contain bg-[#F6E7D3]",
 };
 
 export default function MemoryCard({ memory, unlocked, onRequestUnlock, onClose }: Props) {
