@@ -96,6 +96,12 @@ body {
   animation: hint-bob 1.6s ease-in-out infinite;
 }
 
+/* Past the cover, page scrolling is locked — give the globe every touch
+   gesture, including vertical rotation (overrides the inline pan-y). */
+.tour-locked canvas {
+  touch-action: none !important;
+}
+
 @keyframes hint-bob {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 6px; }

@@ -121,8 +121,10 @@ export default function MemoryGlobe() {
     const globe = globeRef.current;
     if (!globe) return;
     globe.controls().autoRotate = false;
+    // Pan to the pin but keep the user's current zoom — never zoom out on them.
+    const { altitude } = globe.pointOfView();
     globe.pointOfView(
-      { lat: memory.lat, lng: memory.lng, altitude: 1.5 },
+      { lat: memory.lat, lng: memory.lng, altitude },
       prefersReducedMotion() ? 0 : 1000,
     );
   }, []);
@@ -200,11 +202,11 @@ export default function MemoryGlobe() {
     controls.autoRotate = !prefersReducedMotion();
     controls.autoRotateSpeed = 0.4;
 
-    // globe.gl re-tunes zoomSpeed to sqrt(altitude) * 0.5 on every camera
-    // change, which feels sluggish. This listener registers after theirs,
-    // so our snappier tuning wins.
+    // globe.gl re-tunes zoomSpeed on every camera change; this listener
+    // registers after theirs so our tuning wins. 0.8 is the sweet spot —
+    // globe.gl's 0.5 feels sluggish, 1.5 was twitchy on trackpads.
     controls.addEventListener("change", () => {
-      controls.zoomSpeed = Math.sqrt(globe.pointOfView().altitude) * 1.5;
+      controls.zoomSpeed = Math.sqrt(globe.pointOfView().altitude) * 0.8;
     });
 
     // Pause the idle spin while the user is interacting; resume after idle.
