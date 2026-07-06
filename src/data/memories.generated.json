@@ -3,241 +3,301 @@
     "id": "philadelphia",
     "lat": 39.953,
     "lng": -75.164,
-    "location": "Philadelphia",
-    "title": "Placeholder: Philadelphia",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-1.svg"
-  },
-  {
-    "id": "san-francisco",
-    "lat": 37.775,
-    "lng": -122.419,
-    "location": "San Francisco",
-    "title": "Placeholder: San Francisco",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-2.svg"
-  },
-  {
-    "id": "nyc-les",
-    "lat": 40.715,
-    "lng": -73.986,
-    "location": "Lower East Side, New York",
-    "title": "Placeholder: Lower East Side, New York",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-3.svg"
-  },
-  {
-    "id": "miami",
-    "lat": 25.762,
-    "lng": -80.192,
-    "location": "Miami",
-    "title": "Placeholder: Miami",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-4.svg"
+    "location": "Philadelphia, PA",
+    "title": "University of Pennsylvania",
+    "caption": "Some say we fell in love during this photoshoot... it was definitely the start of something!",
+    "date": "Aug 2015",
+    "photo": "/memories/01.webp"
   },
   {
     "id": "rhode-island",
     "lat": 41.58,
     "lng": -71.477,
-    "location": "Rhode Island",
-    "title": "Placeholder: Rhode Island",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-5.svg"
-  },
-  {
-    "id": "big-sur",
-    "lat": 36.27,
-    "lng": -121.808,
-    "location": "Big Sur",
-    "title": "Placeholder: Big Sur",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-1.svg"
-  },
-  {
-    "id": "pacific-palisades",
-    "lat": 34.048,
-    "lng": -118.526,
-    "location": "Pacific Palisades",
-    "title": "Placeholder: Pacific Palisades",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-2.svg"
-  },
-  {
-    "id": "cupertino",
-    "lat": 37.323,
-    "lng": -122.032,
-    "location": "Cupertino",
-    "title": "Placeholder: Cupertino",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-3.svg"
-  },
-  {
-    "id": "salt-lake-city",
-    "lat": 40.761,
-    "lng": -111.891,
-    "location": "Salt Lake City",
-    "title": "Placeholder: Salt Lake City",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-4.svg"
-  },
-  {
-    "id": "lake-tahoe",
-    "lat": 39.097,
-    "lng": -120.032,
-    "location": "Lake Tahoe",
-    "title": "Placeholder: Lake Tahoe",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-5.svg"
-  },
-  {
-    "id": "singapore-orchard",
-    "lat": 1.304,
-    "lng": 103.832,
-    "location": "Orchard, Singapore",
-    "title": "Placeholder: Orchard, Singapore",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-1.svg"
-  },
-  {
-    "id": "hong-kong",
-    "lat": 22.28,
-    "lng": 114.166,
-    "location": "Upper House, Hong Kong",
-    "title": "Placeholder: Upper House, Hong Kong",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-2.svg"
-  },
-  {
-    "id": "niseko",
-    "lat": 42.805,
-    "lng": 140.687,
-    "location": "Niseko, Japan",
-    "title": "Placeholder: Niseko, Japan",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-3.svg"
-  },
-  {
-    "id": "tokyo",
-    "lat": 35.68,
-    "lng": 139.69,
-    "location": "Tokyo, Japan",
-    "title": "Placeholder: Tokyo, Japan",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-4.svg"
-  },
-  {
-    "id": "taipei",
-    "lat": 25.033,
-    "lng": 121.565,
-    "location": "Taipei, Taiwan",
-    "title": "Placeholder: Taipei, Taiwan",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-5.svg"
-  },
-  {
-    "id": "copenhagen",
-    "lat": 55.676,
-    "lng": 12.568,
-    "location": "Copenhagen",
-    "title": "Placeholder: Copenhagen",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-1.svg"
-  },
-  {
-    "id": "barcelona",
-    "lat": 41.387,
-    "lng": 2.17,
-    "location": "Barcelona",
-    "title": "Placeholder: Barcelona",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-2.svg"
-  },
-  {
-    "id": "lisbon",
-    "lat": 38.722,
-    "lng": -9.139,
-    "location": "Lisbon",
-    "title": "Placeholder: Lisbon",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-3.svg"
-  },
-  {
-    "id": "puerto-rico",
-    "lat": 18.466,
-    "lng": -66.106,
-    "location": "Puerto Rico",
-    "title": "Placeholder: Puerto Rico",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-4.svg"
-  },
-  {
-    "id": "cabo",
-    "lat": 22.89,
-    "lng": -109.917,
-    "location": "Cabo",
-    "title": "Placeholder: Cabo",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-5.svg"
-  },
-  {
-    "id": "dumaguete",
-    "lat": 9.307,
-    "lng": 123.307,
-    "location": "Dumaguete, Philippines",
-    "title": "Placeholder: Dumaguete, Philippines",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-1.svg"
+    "location": "Providence, RI",
+    "title": "Brown Family Weekend",
+    "caption": "When we cosplayed as Sofie's parents. What a foreshadowing.",
+    "date": "Oct 2018",
+    "photo": "/memories/02.webp"
   },
   {
     "id": "punta-fuego",
     "lat": 14.164,
     "lng": 120.588,
     "location": "Punta Fuego, Philippines",
-    "title": "Placeholder: Punta Fuego, Philippines",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-2.svg"
+    "title": "Punta Fuego Beach House",
+    "caption": "Fuego has always been there for as long as we've been together. This Fuego trip was especially cathartic.",
+    "date": "Dec 2018",
+    "photo": "/memories/03.webp"
+  },
+  {
+    "id": "pacific-palisades",
+    "lat": 34.048,
+    "lng": -118.526,
+    "location": "Pacific Palisades, CA",
+    "title": "Pacific Palisades",
+    "caption": "First hand witnessing your love for sugarfish. RIP Palisades 🥲",
+    "date": "Apr 2019",
+    "photo": "/memories/04.webp"
+  },
+  {
+    "id": "sorsogon",
+    "lat": 12.974,
+    "lng": 124.005,
+    "location": "Sorsogon, Philippines",
+    "title": "Sorsogon",
+    "caption": "The most unprompted and beautiful trip. Fireflies, couples massages (with your dad), and a rock sanctuary.",
+    "date": "Sep 2019",
+    "photo": "/memories/05.webp"
   },
   {
     "id": "uptown-bgc",
     "lat": 14.559,
     "lng": 121.055,
-    "location": "Uptown BGC, Philippines",
-    "title": "Placeholder: Uptown BGC, Philippines",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-3.svg"
+    "location": "Manila, Philippines",
+    "title": "Ma. Launch Event",
+    "caption": "When Ma. came to life. So proud of you 💕",
+    "date": "Nov 2019",
+    "photo": "/memories/06.webp"
+  },
+  {
+    "id": "center-city",
+    "lat": 39.95,
+    "lng": -75.165,
+    "location": "Center City, PA",
+    "title": "IPD Graduation",
+    "caption": "Bianca earns her Master's Degree!! Philly round 2. Our first cohabitation experiment (and thus when I was set on marrying you).",
+    "date": "May 2021",
+    "photo": "/memories/07.webp"
+  },
+  {
+    "id": "nyc-les",
+    "lat": 40.715,
+    "lng": -73.986,
+    "location": "New York, NY",
+    "title": "Pause Cafe",
+    "caption": "Our home in New York where we became regulars. Where we really grew up as people, both individually and as a couple. A New York minute I'm so thankful to have lived with you.",
+    "date": "Aug 2021",
+    "photo": "/memories/08.webp"
+  },
+  {
+    "id": "puerto-rico",
+    "lat": 18.466,
+    "lng": -66.106,
+    "location": "Puerto Rico",
+    "title": "Patrick & Dooby Joint Bday",
+    "caption": "Our first friends' trip not to the Philippines!! A weekend where our Lynbrook + wags squad was solidified!",
+    "date": "Feb 2022",
+    "photo": "/memories/09.webp"
+  },
+  {
+    "id": "miami",
+    "lat": 25.762,
+    "lng": -80.192,
+    "location": "Miami, FL",
+    "title": "Crypto Miami",
+    "caption": "From mega mansions to mega yachts, the perfect work offsite when you work with your best friends.",
+    "date": "Apr 2022",
+    "photo": "/memories/10.webp"
+  },
+  {
+    "id": "cabo",
+    "lat": 22.89,
+    "lng": -109.917,
+    "location": "Cabo, Mexico",
+    "title": "Mango Deck",
+    "caption": "Cabo round 1 and our first trip together with Ryan!",
+    "date": "Sep 2022",
+    "photo": "/memories/11.webp"
+  },
+  {
+    "id": "disneyland",
+    "lat": 33.812,
+    "lng": -117.919,
+    "location": "Los Angeles, CA",
+    "title": "Disneyland",
+    "caption": "Including this because you've somehow forgotten our Disneyland experience...",
+    "date": "Sep 2022",
+    "photo": "/memories/12.webp"
+  },
+  {
+    "id": "taipei",
+    "lat": 25.033,
+    "lng": 121.565,
+    "location": "Taipei, Taiwan",
+    "title": "Miaoli",
+    "caption": "When you met my grandparents and I got to take you around my home country 🥹",
+    "date": "Jan 2023",
+    "photo": "/memories/13.webp"
+  },
+  {
+    "id": "donum",
+    "lat": 38.222,
+    "lng": -122.432,
+    "location": "Sonoma, CA",
+    "title": "Donum",
+    "caption": "Another special place that encapsulates our SF love story. Can't wait to display our coffee table books soon!",
+    "date": "Feb 2023",
+    "photo": "/memories/14.webp"
+  },
+  {
+    "id": "lake-tahoe",
+    "lat": 39.097,
+    "lng": -120.032,
+    "location": "Lake Tahoe, CA",
+    "title": "SF Pinoy Tahoe Trip",
+    "caption": "The canon event when the SF Pinoys became our closest Filipino friends. We've come a long way from the car ride with Paolo and Paco thinking I'm some Brent kid.",
+    "date": "Mar 2023",
+    "photo": "/memories/15.webp"
+  },
+  {
+    "id": "440-webster",
+    "lat": 37.776,
+    "lng": -122.429,
+    "location": "San Francisco, CA",
+    "title": "440 Webster Mitsuri Themed Birthday",
+    "caption": "Our forever SF home. Also when you were an extreme Mitsuri weeb and my attempt at Sugarfish.",
+    "date": "Jul 2023",
+    "photo": "/memories/16.webp"
   },
   {
     "id": "cdmx",
     "lat": 19.433,
     "lng": -99.133,
-    "location": "CDMX",
-    "title": "Placeholder: CDMX",
-    "caption": "Placeholder caption — swap with the real story.",
-    "date": "Month 20XX",
-    "photo": "/memories/placeholder-4.svg"
+    "location": "CDMX, Mexico",
+    "title": "Lago Algo",
+    "caption": "A crazy trip between Andres, Gaby, Ashley, and even some Adrienne. But Lago Algo will forever live in our hearts.",
+    "date": "Oct 2023",
+    "photo": "/memories/17.webp"
+  },
+  {
+    "id": "big-sur",
+    "lat": 36.27,
+    "lng": -121.808,
+    "location": "Big Sur, CA",
+    "title": "Post Ranch",
+    "caption": "If I had a ring I would've proposed right here. One of the most beautiful views I've ever seen.",
+    "date": "Nov 2023",
+    "photo": "/memories/18.webp"
+  },
+  {
+    "id": "balesin",
+    "lat": 14.419,
+    "lng": 121.939,
+    "location": "Balesin, Philippines",
+    "title": "Balesin Banyan Tree",
+    "caption": "When we got to take my family to Balesin. Banyan tree of life!!",
+    "date": "Dec 2023",
+    "photo": "/memories/19.webp"
+  },
+  {
+    "id": "tokyo",
+    "lat": 35.68,
+    "lng": 139.69,
+    "location": "Tokyo, Japan",
+    "title": "Omotesando",
+    "caption": "My first trip with your family 🥹 Is this the photo evidence that I showed stores to find your Cinnamon Roll bag I dropped? Yessir but that made it even more memorable!",
+    "date": "Dec 2023",
+    "photo": "/memories/20.webp"
+  },
+  {
+    "id": "salt-lake-city",
+    "lat": 40.761,
+    "lng": -111.891,
+    "location": "Salt Lake City, UT",
+    "title": "Salt Lake City",
+    "caption": "Another extremely random trip that I hardly have any memory of, but certainly a step in your journey to shredding.",
+    "date": "Feb 2024",
+    "photo": "/memories/21.webp"
+  },
+  {
+    "id": "monterrey",
+    "lat": 36.568,
+    "lng": -121.95,
+    "location": "Monterrey Bay, CA",
+    "title": "Monterrey",
+    "caption": "Pebble Beach with the Ongs and Ninang Carmen joking I should propose here (2 weeks before I actually proposed).",
+    "date": "Jul 2024",
+    "photo": "/memories/22.webp"
+  },
+  {
+    "id": "dumaguete",
+    "lat": 9.307,
+    "lng": 123.307,
+    "location": "Dumaguete, Philippines",
+    "title": "Manjuyod Sand Bar",
+    "caption": "Somewhere in between peak crashout (Cebu Pac you are terrible) and pure proposal ecstasy. I'll never forget this little stop where I shaved in the bathroom.",
+    "date": "Jul 2024",
+    "photo": "/memories/23.webp"
+  },
+  {
+    "id": "niseko",
+    "lat": 42.805,
+    "lng": 140.687,
+    "location": "Niseko, Japan",
+    "title": "Setsu Honeymoon",
+    "caption": "The first time we're able to vacation together officially!! With permission to stay in Setsu! Pure bliss of a week.",
+    "date": "Feb 2025",
+    "photo": "/memories/24.webp"
+  },
+  {
+    "id": "alamo-square",
+    "lat": 37.775,
+    "lng": -122.419,
+    "location": "San Francisco, CA",
+    "title": "Alamo Park",
+    "caption": "A goodbye to our time in SF but really it was au revoir -- until we meet again.",
+    "date": "Jun 2025",
+    "photo": "/memories/25.webp"
+  },
+  {
+    "id": "lisbon",
+    "lat": 38.722,
+    "lng": -9.139,
+    "location": "Lisbon, Portugal",
+    "title": "Setúbal",
+    "caption": "Our first eurotrip, starting with Bridget's wedding! Despite the 100 degrees and Philippine's Barron Trump cramping our style, I look back at Portugal fondly (even if it's a dying city).",
+    "date": "Jun 2025",
+    "photo": "/memories/26.webp"
+  },
+  {
+    "id": "barcelona",
+    "lat": 41.387,
+    "lng": 2.17,
+    "location": "Barcelona, Spain",
+    "title": "City Tour Bus",
+    "caption": "Our first HOP ON HOP OFF experience!!! With a city tours boat tour to cap it off! Losing my DJI hurt but I'm so glad to see the Sagrada, Guadi's other works, and OG Loewe.",
+    "date": "Jul 2025",
+    "photo": "/memories/27.webp"
+  },
+  {
+    "id": "copenhagen",
+    "lat": 55.676,
+    "lng": 12.568,
+    "location": "Copenhagen, Denmark",
+    "title": "Margo",
+    "caption": "Too many highlights in Copenhagen but our Italian birthday dinner across our hotel was pure happiness.",
+    "date": "Jul 2025",
+    "photo": "/memories/28.webp"
+  },
+  {
+    "id": "hong-kong",
+    "lat": 22.28,
+    "lng": 114.166,
+    "location": "Admiralty, Hong Kong",
+    "title": "Upper House",
+    "caption": "Still the top, top hotel experience for me ever. A short trip but thank you for showing me Hong Kong.",
+    "date": "Sep 2025",
+    "photo": "/memories/29.webp"
+  },
+  {
+    "id": "singapore-orchard",
+    "lat": 1.304,
+    "lng": 103.832,
+    "location": "Orchard, Singapore",
+    "title": "Newton Food Centre",
+    "caption": "Our last international trip before I enlisted for the AI war. I thought I really got to bond with Lolo and Lola here ❤️",
+    "date": "Jan 2026",
+    "photo": "/memories/30.webp"
   },
   {
     "id": "sydney",
