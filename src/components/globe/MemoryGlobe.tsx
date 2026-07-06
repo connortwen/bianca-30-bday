@@ -269,9 +269,13 @@ export default function MemoryGlobe() {
           }}
           htmlElementVisibilityModifier={(el, isVisible) => {
             // Fade pins on the far side of the globe instead of popping.
+            // Pointer events live on the dot (the button box is inert), so
+            // toggle the dot — an inline style on the button would override
+            // the CSS that keeps its oversized box unclickable.
             el.style.opacity = isVisible ? "1" : "0";
-            el.style.pointerEvents = isVisible ? "auto" : "none";
             el.style.transition = "opacity 0.25s ease";
+            const dot = el.querySelector<HTMLElement>(".memory-pin__dot");
+            if (dot) dot.style.pointerEvents = isVisible ? "" : "none";
           }}
           onGlobeReady={handleGlobeReady}
         />

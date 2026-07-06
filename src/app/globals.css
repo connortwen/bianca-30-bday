@@ -34,13 +34,18 @@ body {
   border: none;
   background: transparent;
   cursor: pointer;
-  pointer-events: auto;
+  /* The button box is bigger than the visible dot (padding + nudges), and
+     overlapping invisible boxes steal each other's taps. Only the circular
+     dot itself takes pointer events. */
+  pointer-events: none;
 }
 
 .memory-pin__dot {
   display: block;
   width: 32px;
   height: 32px;
+  border-radius: 9999px; /* hit-testing honors the rounded shape */
+  pointer-events: auto;
   filter: drop-shadow(0 2px 4px rgba(74, 66, 56, 0.3));
   transition: transform 0.2s ease, filter 0.2s ease;
   animation: pin-bob 2.6s ease-in-out infinite;
