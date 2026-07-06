@@ -7,7 +7,9 @@
     "title": "University of Pennsylvania",
     "caption": "Some say we fell in love during this photoshoot... it was definitely the start of something!",
     "date": "Aug 2015",
-    "photo": "/memories/01.webp"
+    "photo": "/memories/01.webp",
+    "status": "locked",
+    "codeHash": "4d8c5e22973d33996c8103e6ff4cfa393f753b817c524b4d05b9894d9d89abc6"
   },
   {
     "id": "rhode-island",
@@ -57,7 +59,9 @@
     "title": "Ma. Launch Event",
     "caption": "When Ma. came to life. So proud of you 💕",
     "date": "Nov 2019",
-    "photo": "/memories/06.webp"
+    "photo": "/memories/06.webp",
+    "status": "locked",
+    "codeHash": "5c44eb983690f2e08de48711dd127a07d99ca16a1dac04436abb7021a6d26c28"
   },
   {
     "id": "center-city",
@@ -157,7 +161,9 @@
     "title": "440 Webster Mitsuri Themed Birthday",
     "caption": "Our forever SF home. Also when you were an extreme Mitsuri weeb and my attempt at Sugarfish.",
     "date": "Jul 2023",
-    "photo": "/memories/16.webp"
+    "photo": "/memories/16.webp",
+    "status": "locked",
+    "codeHash": "7b18fb03292e1dc6fa8da7e4c11b823988e1912957092012149964f96a645b6d"
   },
   {
     "id": "cdmx",
