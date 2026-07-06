@@ -57,10 +57,18 @@ function CardMedia({
     <img
       src={memory.photo}
       alt={memory.title}
-      className="aspect-[4/3] w-full rounded-xl object-cover"
+      className={`aspect-[4/3] w-full rounded-xl object-cover ${
+        PHOTO_CROP[memory.id] ?? ""
+      }`}
     />
   );
 }
+
+// Crop-window overrides for photos whose subjects sit away from center
+// (object-cover defaults to a centered crop).
+const PHOTO_CROP: Record<string, string> = {
+  miami: "object-bottom",
+};
 
 export default function MemoryCard({ memory, unlocked, onRequestUnlock, onClose }: Props) {
   useEffect(() => {

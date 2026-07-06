@@ -54,11 +54,14 @@ const PIN_VARIANTS = {
 // Pins whose coordinates nearly coincide get a small screen-space nudge so
 // the stickers fan apart visually — the underlying lat/lng stay honest.
 // [x, y] in pixels, applied as margin (translate is owned by the bob animation).
+// Sized so paired stickers clear each other even at max zoom, where their
+// coordinates collapse to the same pixel (dots are 32-36px wide). The SF
+// pair nudges downward, away from Donum to the north.
 const PIN_NUDGES: Record<string, [number, number]> = {
-  "philadelphia": [-16, -12],
-  "center-city": [14, 10],
-  "440-webster": [-18, -10],
-  "alamo-square": [14, 12],
+  "philadelphia": [-24, -16],
+  "center-city": [22, 16],
+  "440-webster": [-28, 14],
+  "alamo-square": [24, 18],
 };
 
 export function createPinElement(
