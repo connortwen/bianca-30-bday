@@ -51,6 +51,16 @@ const PIN_VARIANTS = {
   },
 } as const;
 
+// Pins whose coordinates nearly coincide get a small screen-space nudge so
+// the stickers fan apart visually — the underlying lat/lng stay honest.
+// [x, y] in pixels, applied as margin (translate is owned by the bob animation).
+const PIN_NUDGES: Record<string, [number, number]> = {
+  "philadelphia": [-16, -12],
+  "center-city": [14, 10],
+  "440-webster": [-18, -10],
+  "alamo-square": [14, 12],
+};
+
 export function createPinElement(
   memory: Memory,
   onSelect: (memory: Memory) => void,
@@ -67,6 +77,11 @@ export function createPinElement(
   dot.innerHTML = variant.face;
   // Stagger the idle bob so pins don't move in lockstep.
   dot.style.animationDelay = `${(memory.id.charCodeAt(0) % 5) * 0.35}s`;
+  const nudge = PIN_NUDGES[memory.id];
+  if (nudge) {
+    dot.style.marginLeft = `${nudge[0]}px`;
+    dot.style.marginTop = `${nudge[1]}px`;
+  }
   el.appendChild(dot);
 
   el.addEventListener("click", (event) => {
